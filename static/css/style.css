@@ -1,0 +1,15 @@
+body {
+  background:
+    radial-gradient(circle at top right, #eaf2ff, transparent 35%), #f8f9fa;
+
+  color: #212529;
+}
+
+.hero-section {
+  max-width: 760px;
+}
+
+.hero-description {
+  max-width: 620px;
+  line-height: 1.8;
+}

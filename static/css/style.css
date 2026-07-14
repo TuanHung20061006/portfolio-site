@@ -1,15 +1,225 @@
-body {
-  background:
-    radial-gradient(circle at top right, #eaf2ff, transparent 35%), #f8f9fa;
+:root {
+  --navbar-height: 72px;
+  --primary-color: #0d6efd;
+  --heading-color: #172033;
+  --body-color: #4b5563;
+  --surface-color: #ffffff;
+  --border-color: #e5e7eb;
+}
 
-  color: #212529;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height);
+}
+
+body {
+  margin: 0;
+  padding-top: var(--navbar-height);
+  color: var(--body-color);
+  background-color: var(--surface-color);
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar {
+  min-height: var(--navbar-height);
+}
+
+.navbar-brand {
+  letter-spacing: 0.02em;
+}
+
+.nav-link {
+  font-weight: 500;
 }
 
 .hero-section {
-  max-width: 760px;
+  min-height: calc(100vh - var(--navbar-height));
+  padding: 80px 0;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(13, 110, 253, 0.16),
+      transparent 35%
+    ),
+    linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+}
+
+.hero-label,
+.section-label {
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
 }
 
 .hero-description {
-  max-width: 620px;
+  max-width: 680px;
   line-height: 1.8;
+}
+
+.profile-placeholder {
+  width: min(360px, 100%);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dbeafe, #f8fafc);
+  color: #64748b;
+  font-weight: 600;
+}
+
+.section-padding {
+  padding: 96px 0;
+}
+
+.section-heading {
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+
+.section-description {
+  margin-top: 16px;
+  line-height: 1.8;
+}
+
+.info-card,
+.skill-card,
+.contact-information {
+  height: 100%;
+  padding: 28px;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  background-color: #ffffff;
+}
+
+.skill-card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.skill-badge {
+  padding: 8px 12px;
+  border: 1px solid #cfe2ff;
+  border-radius: 999px;
+  background-color: #eef5ff;
+  color: #0a58ca;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.project-card {
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.07);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 42px rgba(15, 23, 42, 0.12);
+}
+
+.project-image {
+  min-height: 200px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #dbeafe, #f1f5f9);
+  color: #64748b;
+  font-weight: 600;
+}
+
+.form-control {
+  min-height: 48px;
+}
+
+textarea.form-control {
+  min-height: auto;
+}
+
+.footer p {
+  color: #f8f9fa;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    padding: 16px 0;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 72px 0;
+  }
+
+  .section-padding {
+    padding: 72px 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  :root {
+    --navbar-height: 64px;
+  }
+
+  body {
+    font-size: 0.95rem;
+  }
+
+  .hero-section {
+    padding: 56px 0;
+  }
+
+  .hero-section .display-3 {
+    font-size: 2.5rem;
+  }
+
+  .section-padding {
+    padding: 56px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 32px;
+  }
+
+  .info-card,
+  .skill-card,
+  .contact-information {
+    padding: 22px;
+  }
+
+  .hero-section .btn {
+    width: 100%;
+  }
+
+  .footer {
+    text-align: center;
+  }
 }

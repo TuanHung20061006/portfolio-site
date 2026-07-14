@@ -2,9 +2,9 @@
 %} {% block content %}
 
 <!-- Hero Section -->
-<section class="hero-section d-flex align-skills-center">
+<section class="hero-section d-flex align-items-center">
   <div class="container">
-    <div class="row align-skills-center gy-5">
+    <div class="row align-items-center gy-5">
       <div class="col-lg-7">
         <p class="hero-label text-primary fw-semibold mb-2">XIN CHÀO, TÔI LÀ</p>
 
@@ -28,9 +28,15 @@
       </div>
 
       <div class="col-lg-5 text-center">
-        <div class="profile-placeholder">
-          <span> Ảnh cá nhân </span>
-        </div>
+        {% if avatar_image %}
+        <img
+          src="{{ url_for('static', filename=avatar_image) }}"
+          alt="Ảnh đại diện của {{ name }}"
+          class="profile-image img-fluid"
+        />
+        {% else %}
+        <div class="profile-placeholder">Avatar</div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -50,7 +56,7 @@
       <h2>Giới thiệu</h2>
     </div>
 
-    <div class="row gy-4 align-skills-center">
+    <div class="row gy-4 align-items-center">
       <div class="col-lg-7">
         <p>
           Tôi là sinh viên và lập trình viên đang phát triển kỹ năng trong lĩnh
@@ -143,7 +149,16 @@
       <div class="col-md-6 col-xl-4">
         <article class="project-card card h-100 border-0">
           <div class="project-image">
+            {% if project.image %}
+            <img
+              src="{{ url_for('static', filename=project.image) }}"
+              alt="Ảnh minh họa dự án {{ project.name }}"
+              class="project-thumbnail"
+              loading="lazy"
+            />
+            {% else %}
             <span>Project image</span>
+            {% endif %}
           </div>
 
           <div class="card-body d-flex flex-column">
@@ -212,22 +227,18 @@
           <p>
             <strong>GitHub:</strong><br />
             <a
-              href="https://github.com/your-username"
+              href="https://github.com/tuanhung20061006"
               target="_blank"
               rel="noopener noreferrer"
             >
-              github.com/your-username
+              https://github.com/tuanhung20061006
             </a>
           </p>
 
           <p>
             <strong>LinkedIn:</strong><br />
-            <a
-              href="https://www.linkedin.com/in/your-username"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              linkedin.com/in/your-username
+            <a href="Chưa cập nhật" target="_blank" rel="noopener noreferrer">
+              Chưa cập nhật
             </a>
           </p>
         </div>

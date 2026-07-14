@@ -1,8 +1,18 @@
 from datetime import datetime
+from pathlib import Path
 
 from flask import Flask, render_template
 
 app = Flask(__name__)
+BASE_DIR = Path(__file__).resolve().parent
+
+
+def first_existing_static_file(*filenames):
+    for filename in filenames:
+        if (BASE_DIR / "static" / filename).is_file():
+            return filename
+
+    return None
 
 
 @app.route("/")
@@ -12,23 +22,23 @@ def home():
     skill_groups = [
         {
             "title": "Programming Languages",
-            "items": ["Python", "JavaScript", "SQL"],
+            "skills": ["Python", "JavaScript", "SQL"],
         },
         {
             "title": "Backend",
-            "items": ["Flask", "Jinja2", "REST API"],
+            "skills": ["Flask", "Jinja2", "REST API"],
         },
         {
             "title": "Frontend",
-            "items": ["HTML", "CSS", "Bootstrap"],
+            "skills": ["HTML", "CSS", "Bootstrap"],
         },
         {
             "title": "Database",
-            "items": ["SQLite", "MySQL"],
+            "skills": ["SQLite", "MySQL"],
         },
         {
             "title": "Tools",
-            "items": ["Git", "GitHub", "VS Code", "Postman"],
+            "skills": ["Git", "GitHub", "VS Code", "Postman"],
         },
     ]
 
@@ -44,6 +54,7 @@ def home():
                 "Flask",
                 "Bootstrap",
             ],
+            "image": "images/project/project-1.jpg",
             "github_url": "https://github.com/TuanHung20061006",
             "demo_url": "#",
         },
@@ -58,6 +69,7 @@ def home():
                 "Flask",
                 "SQLite",
             ],
+            "image": "images/project/project-2.webp",
             "github_url": "#",
             "demo_url": "#",
         },
@@ -72,10 +84,16 @@ def home():
                 "JavaScript",
                 "Bootstrap",
             ],
+            "image": "images/project/project-3.avif",
             "github_url": "#",
             "demo_url": "#",
         },
     ]
+
+    avatar_image = first_existing_static_file(
+        "images/avatar.jpg",
+        "images/project/meow.jpg",
+    )
 
     return render_template(
         "index.html",
@@ -84,6 +102,7 @@ def home():
         current_year=datetime.now().year,
         skill_groups=skill_groups,
         projects=projects,
+        avatar_image=avatar_image,
     )
 
 

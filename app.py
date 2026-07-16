@@ -7,9 +7,9 @@ app = Flask(__name__)
 BASE_DIR = Path(__file__).resolve().parent
 
 
-def first_existing_static_file(*filenames):
+def first_existing_public_file(*filenames):
     for filename in filenames:
-        if (BASE_DIR / "static" / filename).is_file():
+        if (BASE_DIR / "public" / filename).is_file():
             return filename
 
     return None
@@ -90,7 +90,7 @@ def home():
         },
     ]
 
-    avatar_image = first_existing_static_file(
+    avatar_image = first_existing_public_file(
         "images/avatar.jpg",
         "images/project/meow.jpg",
     )

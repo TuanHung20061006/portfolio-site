@@ -18,7 +18,7 @@
           <a href="#projects" class="btn btn-primary btn-lg"> Xem dự án </a>
 
           <a
-            href="{{ url_for('static', filename='files/CV.pdf') }}"
+            href="/files/CV.pdf"
             class="btn btn-outline-dark btn-lg"
             download
           >
@@ -30,7 +30,7 @@
       <div class="col-lg-5 text-center">
         {% if avatar_image %}
         <img
-          src="{{ url_for('static', filename=avatar_image) }}"
+          src="/{{ avatar_image }}"
           alt="Ảnh đại diện của {{ name }}"
           class="profile-image img-fluid"
         />
@@ -151,7 +151,7 @@
           <div class="project-image">
             {% if project.image %}
             <img
-              src="{{ url_for('static', filename=project.image) }}"
+              src="/{{ project.image }}"
               alt="Ảnh minh họa dự án {{ project.name }}"
               class="project-thumbnail"
               loading="lazy"

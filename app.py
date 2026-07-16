@@ -1,18 +1,8 @@
 from datetime import datetime
-from pathlib import Path
 
 from flask import Flask, render_template
 
 app = Flask(__name__, static_folder="public", static_url_path="")
-BASE_DIR = Path(__file__).resolve().parent
-
-
-def first_existing_public_file(*filenames):
-    for filename in filenames:
-        if (BASE_DIR / "public" / filename).is_file():
-            return filename
-
-    return None
 
 
 @app.route("/")
@@ -90,11 +80,6 @@ def home():
         },
     ]
 
-    avatar_image = first_existing_public_file(
-        "images/avatar.jpg",
-        "images/project/avatar_image.jpg",
-    )
-
     return render_template(
         "index.html",
         name="Cao Tuấn Hùng",
@@ -102,7 +87,7 @@ def home():
         current_year=datetime.now().year,
         skill_groups=skill_groups,
         projects=projects,
-        avatar_image=avatar_image,
+        avatar_image="images/project/avatar_image.jpg",
     )
 
 

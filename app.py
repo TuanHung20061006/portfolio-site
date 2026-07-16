@@ -3,7 +3,7 @@ from pathlib import Path
 
 from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="public", static_url_path="")
 BASE_DIR = Path(__file__).resolve().parent
 
 
@@ -84,7 +84,7 @@ def home():
                 "JavaScript",
                 "Bootstrap",
             ],
-            "image": "images/project/project-3.avif",
+            "image": "images/project/project-3.jpg",
             "github_url": "#",
             "demo_url": "#",
         },
@@ -92,7 +92,7 @@ def home():
 
     avatar_image = first_existing_public_file(
         "images/avatar.jpg",
-        "images/project/meow.jpg",
+        "images/project/avatar_image.jpg",
     )
 
     return render_template(
